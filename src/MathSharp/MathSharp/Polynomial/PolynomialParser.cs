@@ -98,6 +98,7 @@ public class PolynomialParser
         return result;
     }
 
+    // Based on https://gist.github.com/rubik/1942032
     public static Dictionary<int, int> Parse(string input)
     {
         // Parse a polynomial in the form of a string
