@@ -37,20 +37,35 @@ public class PolynomialParser
                 {
                     toConcat.Add("+");
                 }
-                if (coefficient == 1)
+
+                if (power == 0)
                 {
-                    toConcat.Add($"x^{{{power}}}");
-                }
-                else if (coefficient == -1)
-                {
-                    toConcat.Add($"-x^{{{power}}}");
+                    toConcat.Add(coefficient.ToString());
                 }
                 else
                 {
-                    toConcat.Add($"{coefficient} x^{{{power}}}");
-                }
+                    var monomial = $"x^{{{power}}}";
 
-                isFirst = false;
+                    if (power == 1)
+                    {
+                        monomial = "x";
+                    }
+
+                    if (coefficient == 1)
+                    {
+                        toConcat.Add(monomial);
+                    }
+                    else if (coefficient == -1)
+                    {
+                        toConcat.Add($"-{monomial}");
+                    }
+                    else
+                    {
+                        toConcat.Add($"{coefficient} {monomial}");
+                    }
+
+                    isFirst = false;                    
+                }
             }
         }
 
